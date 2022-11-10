@@ -24,7 +24,8 @@ public class HttpClient {
                 .build()) {
             HttpGet request = new HttpGet(REQUEST_URI);
             CloseableHttpResponse response = httpClient.execute(request);
-            List<Cats> facts = mapper.readValue(response.getEntity().getContent(), new TypeReference<>() {});
+            List<Cats> facts = mapper.readValue(response.getEntity().getContent(), new TypeReference<>() {
+            });
             facts.stream()
                     .filter(fact -> fact.getUpvotes() != null)
                     .forEach(System.out::println);
